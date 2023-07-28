@@ -3,13 +3,28 @@ package br.com.tiarlei.model;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "person")
 public class Person implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(name = "first_name", nullable = false, length = 40)
 	private String firstName;
+	@Column(name = "last_name", nullable = false, length = 40)
 	private String lastName;
+	@Column(nullable = false, length = 120)
 	private String address;
+	@Column(length = 6)
 	private String gender;
 	
 	public Person() {
@@ -73,5 +88,4 @@ public class Person implements Serializable {
 				&& Objects.equals(gender, other.gender) && Objects.equals(id, other.id)
 				&& Objects.equals(lastName, other.lastName);
 	}
-	
 }
