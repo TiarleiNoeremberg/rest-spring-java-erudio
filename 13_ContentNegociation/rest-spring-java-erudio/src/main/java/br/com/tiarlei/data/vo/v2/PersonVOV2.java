@@ -1,31 +1,22 @@
-package br.com.tiarlei.data.vo.v1;
+package br.com.tiarlei.data.vo.v2;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonPropertyOrder({"id", "first_name", "last_name", "address", "gender"})
-public class PersonVO implements Serializable {
+public class PersonVOV2 implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	
 	private Long id;
-	
-	@JsonProperty("first_name")
 	private String firstName;
-	
-	@JsonProperty("last_name")
 	private String lastName;
-	
 	private String address;
-	
-	//@JsonIgnore //Caso queira omitir algum campo no json na serialização
 	private String gender;
+	private Date birthDay;
 	
-	public PersonVO() {
+	public PersonVOV2() {
 	}
 
 	public Long getId() {
@@ -68,9 +59,17 @@ public class PersonVO implements Serializable {
 		this.gender = gender;
 	}
 
+	public Date getBirthDay() {
+		return birthDay;
+	}
+
+	public void setBirthDay(Date birthDay) {
+		this.birthDay = birthDay;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(address, firstName, gender, id, lastName);
+		return Objects.hash(address, birthDay, firstName, gender, id, lastName);
 	}
 
 	@Override
@@ -81,11 +80,9 @@ public class PersonVO implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		PersonVO other = (PersonVO) obj;
-		return Objects.equals(address, other.address) && Objects.equals(firstName, other.firstName)
-				&& Objects.equals(gender, other.gender) && Objects.equals(id, other.id)
-				&& Objects.equals(lastName, other.lastName);
+		PersonVOV2 other = (PersonVOV2) obj;
+		return Objects.equals(address, other.address) && Objects.equals(birthDay, other.birthDay)
+				&& Objects.equals(firstName, other.firstName) && Objects.equals(gender, other.gender)
+				&& Objects.equals(id, other.id) && Objects.equals(lastName, other.lastName);
 	}
-
-	
 }
