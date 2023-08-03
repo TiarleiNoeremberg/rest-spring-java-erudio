@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import br.com.tiarlei.controllers.PersonController;
 import br.com.tiarlei.data.vo.v1.PersonVO;
 import br.com.tiarlei.data.vo.v2.PersonVOV2;
+import br.com.tiarlei.exceptions.RequiredObjectsIsNullException;
 import br.com.tiarlei.exceptions.ResourceNotFoundException;
 import br.com.tiarlei.mapper.DozerMapper;
 import br.com.tiarlei.mapper.custom.PersonMapper;
@@ -46,6 +47,7 @@ public class PersonServices {
 	}
 	
 	public PersonVO create(PersonVO person) {
+		if (person == null) throw new RequiredObjectsIsNullException();
 		logger.info("Creating one person!");
 		var entity = DozerMapper.parseObject(person, Person.class);
 		var vo =  DozerMapper.parseObject(repository.save(entity), PersonVO.class);
@@ -54,6 +56,7 @@ public class PersonServices {
 	}
 
 	public PersonVO update(PersonVO person) {
+		if (person == null) throw new RequiredObjectsIsNullException();
 		logger.info("Updating one person!");
 		
 		var entity = repository.findById(person.getKey())
