@@ -1,4 +1,4 @@
-package br.com.tiarlei.data.vo.v1;
+package br.com.tiarlei.data.dto.v1;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.github.dozermapper.core.Mapping;
 
 @JsonPropertyOrder({"id", "first_name", "last_name", "address", "gender"})
-public class PersonVO extends RepresentationModel<PersonVO> implements Serializable {
+public class PersonDTO extends RepresentationModel<PersonDTO> implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@JsonProperty("id")
@@ -27,7 +27,7 @@ public class PersonVO extends RepresentationModel<PersonVO> implements Serializa
 	//@JsonIgnore //Caso queira omitir algum campo no json na serialização
 	private String gender;
 	
-	public PersonVO() {
+	public PersonDTO() {
 	}
 
 	public Long getKey() {
@@ -86,7 +86,7 @@ public class PersonVO extends RepresentationModel<PersonVO> implements Serializa
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		PersonVO other = (PersonVO) obj;
+		PersonDTO other = (PersonDTO) obj;
 		return Objects.equals(address, other.address) && Objects.equals(firstName, other.firstName)
 				&& Objects.equals(gender, other.gender) && Objects.equals(key, other.key)
 				&& Objects.equals(lastName, other.lastName);

@@ -1,4 +1,4 @@
-package br.com.tiarlei.data.vo.v1;
+package br.com.tiarlei.data.dto.v1;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.github.dozermapper.core.Mapping;
 
 @JsonPropertyOrder({"id", "author", "title", "launch_date", "price"})
-public class BookVO extends RepresentationModel<BookVO> implements Serializable {
+public class BookDTO extends RepresentationModel<BookDTO> implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@JsonProperty("id")
@@ -26,7 +26,7 @@ public class BookVO extends RepresentationModel<BookVO> implements Serializable 
 	
 	private Double price;
 	
-	public BookVO() {
+	public BookDTO() {
 	}
 
 	public Long getKey() {
@@ -85,7 +85,7 @@ public class BookVO extends RepresentationModel<BookVO> implements Serializable 
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		BookVO other = (BookVO) obj;
+		BookDTO other = (BookDTO) obj;
 		return Objects.equals(author, other.author) && Objects.equals(date, other.date)
 				&& Objects.equals(key, other.key) && Objects.equals(price, other.price)
 				&& Objects.equals(title, other.title);

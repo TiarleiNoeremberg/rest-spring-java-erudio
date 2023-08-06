@@ -1,11 +1,11 @@
-package br.com.tiarlei.data.vo.v2;
+package br.com.tiarlei.data.dto.v2;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
 
-public class PersonVOV2 implements Serializable {
+public class PersonDTOV2 implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	
@@ -16,7 +16,7 @@ public class PersonVOV2 implements Serializable {
 	private String gender;
 	private Date birthDay;
 	
-	public PersonVOV2() {
+	public PersonDTOV2() {
 	}
 
 	public Long getId() {
@@ -80,7 +80,7 @@ public class PersonVOV2 implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		PersonVOV2 other = (PersonVOV2) obj;
+		PersonDTOV2 other = (PersonDTOV2) obj;
 		return Objects.equals(address, other.address) && Objects.equals(birthDay, other.birthDay)
 				&& Objects.equals(firstName, other.firstName) && Objects.equals(gender, other.gender)
 				&& Objects.equals(id, other.id) && Objects.equals(lastName, other.lastName);

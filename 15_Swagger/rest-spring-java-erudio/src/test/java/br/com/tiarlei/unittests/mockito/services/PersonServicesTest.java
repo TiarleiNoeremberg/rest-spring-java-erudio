@@ -16,7 +16,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import br.com.tiarlei.data.vo.v1.PersonVO;
+import br.com.tiarlei.data.dto.v1.PersonDTO;
 import br.com.tiarlei.exceptions.RequiredObjectsIsNullException;
 import br.com.tiarlei.model.Person;
 import br.com.tiarlei.repositories.PersonRepository;
@@ -113,7 +113,7 @@ class PersonServicesTest {
 		Person persisted = entity;
 		persisted.setId(1L);
 		
-		PersonVO vo = input.mockVO(1);
+		PersonDTO vo = input.mockVO(1);
 		vo.setKey(1L);
 		
 		when(repository.findById(1L)).thenReturn(Optional.of(entity));
@@ -151,7 +151,7 @@ class PersonServicesTest {
 		Person persisted = entity;
 		persisted.setId(1L);
 		
-		PersonVO vo = input.mockVO(1);
+		PersonDTO vo = input.mockVO(1);
 		vo.setKey(1L);
 		
 		when(repository.save(entity)).thenReturn(persisted);

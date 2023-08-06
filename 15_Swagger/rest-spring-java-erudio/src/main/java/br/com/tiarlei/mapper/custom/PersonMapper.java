@@ -4,14 +4,14 @@ import java.util.Date;
 
 import org.springframework.stereotype.Service;
 
-import br.com.tiarlei.data.vo.v2.PersonVOV2;
+import br.com.tiarlei.data.dto.v2.PersonDTOV2;
 import br.com.tiarlei.model.Person;
 
 @Service
 public class PersonMapper {
 	
-	public PersonVOV2 convertEntityToVo(Person person) {
-		PersonVOV2 vo = new PersonVOV2();
+	public PersonDTOV2 convertEntityToVo(Person person) {
+		PersonDTOV2 vo = new PersonDTOV2();
 		vo.setId(person.getId());
 		vo.setAddress(person.getAddress());
 		vo.setBirthDay(new Date());
@@ -21,7 +21,7 @@ public class PersonMapper {
 		return vo;
 	}
 	
-	public Person convertVoToEntity(PersonVOV2 person) {
+	public Person convertVoToEntity(PersonDTOV2 person) {
 		Person entity = new Person();
 		entity.setId(person.getId());
 		entity.setAddress(person.getAddress());

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.tiarlei.data.vo.v1.PersonVO;
+import br.com.tiarlei.data.dto.v1.PersonDTO;
 import br.com.tiarlei.services.PersonServices;
 import br.com.tiarlei.util.MediaType;
 import io.swagger.v3.oas.annotations.Operation;
@@ -41,7 +41,7 @@ public class PersonController {
 						content = {
 								@Content(
 										mediaType = "application/json",
-										array = @ArraySchema(schema = @Schema(implementation = PersonVO.class))
+										array = @ArraySchema(schema = @Schema(implementation = PersonDTO.class))
 								)
 						}
 				),
@@ -51,7 +51,7 @@ public class PersonController {
 				@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 		}
 	)
-	public List<PersonVO> findAll() {
+	public List<PersonDTO> findAll() {
 		return service.findAll();
 	}
 	
@@ -66,7 +66,7 @@ public class PersonController {
 		tags = {"People"},
 		responses = {
 				@ApiResponse(description = "Success", responseCode = "200",
-						content = @Content(schema = @Schema(implementation = PersonVO.class))
+						content = @Content(schema = @Schema(implementation = PersonDTO.class))
 		
 				),
 				@ApiResponse(description = "No Content", responseCode = "204", content = @Content),
@@ -76,7 +76,7 @@ public class PersonController {
 				@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 		}
 	)
-	public PersonVO findById(
+	public PersonDTO findById(
 			@PathVariable(value = "id") Long id) {
 		return service.findById(id);
 	}
@@ -96,7 +96,7 @@ public class PersonController {
 		tags = {"People"},
 		responses = {
 				@ApiResponse(description = "Success", responseCode = "200",
-						content = @Content(schema = @Schema(implementation = PersonVO.class))
+						content = @Content(schema = @Schema(implementation = PersonDTO.class))
 						
 				),
 				@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
@@ -104,7 +104,7 @@ public class PersonController {
 				@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 		}
 	)
-	public PersonVO create(@RequestBody PersonVO person) {
+	public PersonDTO create(@RequestBody PersonDTO person) {
 		return service.create(person);
 	}
 	
@@ -123,7 +123,7 @@ public class PersonController {
 	tags = {"People"},
 		responses = {
 				@ApiResponse(description = "Updated", responseCode = "200",
-						content = @Content(schema = @Schema(implementation = PersonVO.class))
+						content = @Content(schema = @Schema(implementation = PersonDTO.class))
 						
 				),
 				@ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
@@ -132,7 +132,7 @@ public class PersonController {
 				@ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
 		}
 	)
-	public PersonVO update(@RequestBody PersonVO person) {
+	public PersonDTO update(@RequestBody PersonDTO person) {
 		return service.update(person);
 	}
 	

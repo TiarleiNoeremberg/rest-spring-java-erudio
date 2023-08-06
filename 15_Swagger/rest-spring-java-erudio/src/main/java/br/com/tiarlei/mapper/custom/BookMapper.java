@@ -4,14 +4,14 @@ import java.util.Date;
 
 import org.springframework.stereotype.Service;
 
-import br.com.tiarlei.data.vo.v1.BookVO;
+import br.com.tiarlei.data.dto.v1.BookDTO;
 import br.com.tiarlei.model.Book;
 
 @Service
 public class BookMapper {
 	
-	public BookVO convertEntityToVo(Book book) {
-		BookVO vo = new BookVO();
+	public BookDTO convertEntityToVo(Book book) {
+		BookDTO vo = new BookDTO();
 		vo.setKey(book.getId());
 		vo.setAuthor(book.getAuthor());
 		vo.setTitle(book.getTitle());
@@ -20,7 +20,7 @@ public class BookMapper {
 		return vo;
 	}
 	
-	public Book convertVoToEntity(BookVO book) {
+	public Book convertVoToEntity(BookDTO book) {
 		Book entity = new Book();
 		entity.setId(book.getKey());
 		entity.setAuthor(book.getAuthor());
