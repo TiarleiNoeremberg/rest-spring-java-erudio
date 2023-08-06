@@ -1,16 +1,16 @@
 package br.com.tiarlei.services;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import java.util.List;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import org.springframework.stereotype.Service;
 
 import br.com.tiarlei.controllers.PersonController;
 import br.com.tiarlei.data.vo.v1.PersonVO;
-import br.com.tiarlei.data.vo.v2.PersonVOV2;
 import br.com.tiarlei.exceptions.RequiredObjectsIsNullException;
 import br.com.tiarlei.exceptions.ResourceNotFoundException;
 import br.com.tiarlei.mapper.DozerMapper;
