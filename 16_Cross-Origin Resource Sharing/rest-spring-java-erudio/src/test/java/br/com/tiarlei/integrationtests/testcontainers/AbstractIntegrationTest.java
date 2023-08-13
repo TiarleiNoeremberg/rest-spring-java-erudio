@@ -29,11 +29,11 @@ public class AbstractIntegrationTest {
 			);
 		}
 		
+		@SuppressWarnings({ "unchecked", "rawtypes" })
 		@Override
 		public void initialize(ConfigurableApplicationContext applicationContext) {
 			startContainers();
 			ConfigurableEnvironment environment = applicationContext.getEnvironment();
-			@SuppressWarnings({ "unchecked", "rawtypes" })
 			MapPropertySource testcontainers = new MapPropertySource(
 					"testcontainers",
 					(Map) createConnectionConfiguration());
