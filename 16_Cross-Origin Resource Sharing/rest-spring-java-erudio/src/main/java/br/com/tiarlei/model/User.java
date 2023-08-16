@@ -33,10 +33,10 @@ public class User implements UserDetails, Serializable {
 	@Column(name = "full_name")
 	private String fullName;
 	private String password;
-	@Column(name = "accont_non_expired")
-	private Boolean accontNonExpired;
-	@Column(name = "accont_non_locked")
-	private Boolean accontNonLocked;
+	@Column(name = "account_non_expired")
+	private Boolean accountNonExpired;
+	@Column(name = "account_non_locked")
+	private Boolean accountNonLocked;
 	@Column(name = "credentials_non_expired")
 	private Boolean credentialsNonExpired;
 	private Boolean enabled;
@@ -74,12 +74,12 @@ public class User implements UserDetails, Serializable {
 
 	@Override
 	public boolean isAccountNonExpired() {
-		return this.accontNonExpired;
+		return this.accountNonExpired;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return this.accontNonLocked;
+		return this.accountNonLocked;
 	}
 
 	@Override
@@ -117,19 +117,19 @@ public class User implements UserDetails, Serializable {
 	}
 
 	public Boolean getAccontNonExpired() {
-		return accontNonExpired;
+		return accountNonExpired;
 	}
 
-	public void setAccontNonExpired(Boolean accontNonExpired) {
-		this.accontNonExpired = accontNonExpired;
+	public void setAccontNonExpired(Boolean accountNonExpired) {
+		this.accountNonExpired = accountNonExpired;
 	}
 
 	public Boolean getAccontNonLocked() {
-		return accontNonLocked;
+		return accountNonLocked;
 	}
 
-	public void setAccontNonLocked(Boolean accontNonLocked) {
-		this.accontNonLocked = accontNonLocked;
+	public void setAccontNonLocked(Boolean accountNonLocked) {
+		this.accountNonLocked = accountNonLocked;
 	}
 
 	public Boolean getCredentialsNonExpired() {
@@ -162,7 +162,7 @@ public class User implements UserDetails, Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(accontNonExpired, accontNonLocked, credentialsNonExpired, enabled, fullName, id, password,
+		return Objects.hash(accountNonExpired, accountNonLocked, credentialsNonExpired, enabled, fullName, id, password,
 				permissions, userName);
 	}
 
@@ -175,8 +175,8 @@ public class User implements UserDetails, Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(accontNonExpired, other.accontNonExpired)
-				&& Objects.equals(accontNonLocked, other.accontNonLocked)
+		return Objects.equals(accountNonExpired, other.accountNonExpired)
+				&& Objects.equals(accountNonLocked, other.accountNonLocked)
 				&& Objects.equals(credentialsNonExpired, other.credentialsNonExpired)
 				&& Objects.equals(enabled, other.enabled) && Objects.equals(fullName, other.fullName)
 				&& Objects.equals(id, other.id) && Objects.equals(password, other.password)

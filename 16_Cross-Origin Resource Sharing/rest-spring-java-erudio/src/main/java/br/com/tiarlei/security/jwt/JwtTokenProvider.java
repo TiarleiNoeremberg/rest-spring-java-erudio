@@ -30,7 +30,7 @@ public class JwtTokenProvider {
 	private String secretKey = "secret";
 	
 	@Value("${security.jwt.token.expire-length:3600000}")
-	private long validityInMilliSecunds = 3600000;
+	private long validityInMilliSecunds = 36000000;
 	
 	@Autowired
 	private UserDetailsService userDetailsService;
@@ -49,6 +49,17 @@ public class JwtTokenProvider {
 		var accessToken = getAccessToken(username, roles, now, validity);
 		var refreshToken = getRefreshToken(username, roles, now);
 		return new TokenDTO(username, true, now, validity, accessToken, refreshToken);
+	}
+	
+	public TokenDTO refreshToken(String refreshToken) {
+		if (refreshToken.contains("Bearer ")) refreshToken =
+				refreshToken.substring("Bearer ".length());
+		
+		JWTVerifier verifier = JWT.require(algotithm).build();
+		DecodedJWT decodedJWT = verifier.verify(refreshToken);
+		String username = decodedJWT.getSubject();
+		List<String> roles = decodedJWT.getClaim("roles").asList(String.class);
+		return createdAccessToken(username, roles);
 	}
 
 	private String getAccessToken(String username, List<String> roles, Date now, Date validity) {
@@ -79,7 +90,8 @@ public class JwtTokenProvider {
 	
 	public Authentication getAuthentication(String token) {
 		DecodedJWT decodedJWT = decodedToken(token);
-		UserDetails userDetails = this.userDetailsService.loadUserByUsername(decodedJWT.getSubject());
+		UserDetails userDetails = this.userDetailsService
+				.loadUserByUsername(decodedJWT.getSubject());
 		return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
 	}
 

@@ -16,7 +16,7 @@ import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder.SecretKeyFactoryAlgorithm;
-import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.DefaultSecurityFilterChain;
 
 import br.com.tiarlei.security.jwt.JwtConfigurer;
 import br.com.tiarlei.security.jwt.JwtTokenProvider;
@@ -29,7 +29,7 @@ public class SecurityConfig {
 	private JwtTokenProvider tokenProvider;
 	
 	@Bean
-	PasswordEncoder passwordEncoder() {
+	DelegatingPasswordEncoder passwordEncoder() {
 		Map<String, PasswordEncoder> encoders = new HashMap<>();
 		
 		Pbkdf2PasswordEncoder pbkdf2Encoder = new Pbkdf2PasswordEncoder(
@@ -51,7 +51,7 @@ public class SecurityConfig {
 	}
 
 	@Bean
-	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+	DefaultSecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		return http
 				.httpBasic().disable()
 				.csrf(AbstractHttpConfigurer::disable)
@@ -67,7 +67,8 @@ public class SecurityConfig {
 											"/v3/api-docs/**"
 									)
 									.permitAll()
-									.requestMatchers("/api/v1/**").authenticated()
+									.requestMatchers("/api/person/v1/**").authenticated()
+									//.requestMatchers("/api/book/v1/**").authenticated()
 									.requestMatchers("/users").denyAll()
 						)
 						.cors()

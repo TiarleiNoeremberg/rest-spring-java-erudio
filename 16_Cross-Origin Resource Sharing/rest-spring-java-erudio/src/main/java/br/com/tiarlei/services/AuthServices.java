@@ -8,7 +8,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import br.com.tiarlei.data.dto.v1.security.AccontCredentialDTO;
+import br.com.tiarlei.data.dto.v1.security.AccountCredentialDTO;
 import br.com.tiarlei.data.dto.v1.security.TokenDTO;
 import br.com.tiarlei.repositories.UserRepository;
 import br.com.tiarlei.security.jwt.JwtTokenProvider;
@@ -26,7 +26,7 @@ public class AuthServices {
 	private UserRepository repository;
 	
 	@SuppressWarnings("rawtypes")
-	public ResponseEntity signin(AccontCredentialDTO data) {
+	public ResponseEntity signin(AccountCredentialDTO data) {
 		try {
 			var username = data.getUsername();
 			var password = data.getPassword();
@@ -44,5 +44,18 @@ public class AuthServices {
 		} catch (Exception e) {
 			throw new BadCredentialsException("Invalid username/password supplied!");
 		}
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public ResponseEntity refreshToken(String username, String refreshToken) {
+		var user = repository.findByUserName(username);
+		var tokenResponse = new TokenDTO();
+		if (user != null) {
+			tokenResponse = tokenProvider.refreshToken(refreshToken);
+		} else {
+			throw new UsernameNotFoundException("Username: " + username + " not found!");
+		}
+		
+		return ResponseEntity.ok(tokenResponse);
 	}
 }

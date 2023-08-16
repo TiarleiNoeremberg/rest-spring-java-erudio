@@ -3,13 +3,13 @@ package br.com.tiarlei.data.dto.v1.security;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class AccontCredentialDTO implements Serializable{
+public class AccountCredentialDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String username;
 	private String password;
 	
-	public AccontCredentialDTO(String username, String password) {
+	public AccountCredentialDTO(String username, String password) {
 		this.username = username;
 		this.password = password;
 	}
@@ -43,7 +43,7 @@ public class AccontCredentialDTO implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		AccontCredentialDTO other = (AccontCredentialDTO) obj;
+		AccountCredentialDTO other = (AccountCredentialDTO) obj;
 		return Objects.equals(password, other.password) && Objects.equals(username, other.username);
 	}
 }

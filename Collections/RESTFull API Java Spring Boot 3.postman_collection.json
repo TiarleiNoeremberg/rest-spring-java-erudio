@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "45980c8f-770a-42e2-a177-c1fcd09d798f",
+		"_postman_id": "f616edaf-6641-4fd2-aaee-9dc36e96e0b2",
 		"name": "RESTFull API Java Spring Boot 3",
 		"description": "Some description about my API",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "24289601"
 	},
 	"item": [
@@ -37,7 +37,17 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/person/v1",
+								"url": {
+									"raw": "{{baseUrl}}/api/person/v1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"person",
+										"v1"
+									]
+								},
 								"description": "Updates a person by passing in a JSON, XML or YML reporesentation of the person"
 							},
 							"response": [
@@ -65,7 +75,17 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/person/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/person/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"person",
+												"v1"
+											]
+										}
 									},
 									"status": "OK",
 									"code": 200,
@@ -99,7 +119,17 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/person/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/person/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"person",
+												"v1"
+											]
+										}
 									},
 									"status": "Bad Request",
 									"code": 400,
@@ -128,7 +158,17 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/person/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/person/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"person",
+												"v1"
+											]
+										}
 									},
 									"status": "Unauthorized",
 									"code": 401,
@@ -157,7 +197,17 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/person/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/person/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"person",
+												"v1"
+											]
+										}
 									},
 									"status": "Not Found",
 									"code": 404,
@@ -186,7 +236,17 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/person/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/person/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"person",
+												"v1"
+											]
+										}
 									},
 									"status": "Internal Server Error",
 									"code": 500,
@@ -221,7 +281,17 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/person/v1",
+								"url": {
+									"raw": "{{baseUrl}}/api/person/v1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"person",
+										"v1"
+									]
+								},
 								"description": "Adds a new person by passing in a JSON, XML or YML reporesentation of the person"
 							},
 							"response": [
@@ -249,7 +319,17 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/person/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/person/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"person",
+												"v1"
+											]
+										}
 									},
 									"status": "OK",
 									"code": 200,
@@ -283,7 +363,17 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/person/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/person/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"person",
+												"v1"
+											]
+										}
 									},
 									"status": "Bad Request",
 									"code": 400,
@@ -312,7 +402,17 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/person/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/person/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"person",
+												"v1"
+											]
+										}
 									},
 									"status": "Unauthorized",
 									"code": 401,
@@ -341,7 +441,17 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/person/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/person/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"person",
+												"v1"
+											]
+										}
 									},
 									"status": "Internal Server Error",
 									"code": 500,
@@ -533,14 +643,44 @@
 						{
 							"name": "Finds all people",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [
 									{
 										"key": "Accept",
 										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
 									}
 								],
-								"url": "{{baseUrl}}/api/person/v1",
+								"url": {
+									"raw": "{{baseUrl}}/api/person/v1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"person",
+										"v1"
+									]
+								},
 								"description": "Finds all people"
 							},
 							"response": [
@@ -554,7 +694,17 @@
 												"value": "application/json"
 											}
 										],
-										"url": "{{baseUrl}}/api/person/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/person/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"person",
+												"v1"
+											]
+										}
 									},
 									"status": "OK",
 									"code": 200,
@@ -573,7 +723,17 @@
 									"originalRequest": {
 										"method": "GET",
 										"header": [],
-										"url": "{{baseUrl}}/api/person/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/person/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"person",
+												"v1"
+											]
+										}
 									},
 									"status": "Bad Request",
 									"code": 400,
@@ -587,7 +747,17 @@
 									"originalRequest": {
 										"method": "GET",
 										"header": [],
-										"url": "{{baseUrl}}/api/person/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/person/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"person",
+												"v1"
+											]
+										}
 									},
 									"status": "Unauthorized",
 									"code": 401,
@@ -601,7 +771,17 @@
 									"originalRequest": {
 										"method": "GET",
 										"header": [],
-										"url": "{{baseUrl}}/api/person/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/person/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"person",
+												"v1"
+											]
+										}
 									},
 									"status": "Not Found",
 									"code": 404,
@@ -615,7 +795,17 @@
 									"originalRequest": {
 										"method": "GET",
 										"header": [],
-										"url": "{{baseUrl}}/api/person/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/person/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"person",
+												"v1"
+											]
+										}
 									},
 									"status": "Internal Server Error",
 									"code": 500,
@@ -634,10 +824,21 @@
 									{
 										"key": "Accept",
 										"value": "application/json"
+									},
+									{
+										"key": "Origin",
+										"value": "http://localhost:8080",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/api/person/v1/:id",
+									"raw": "{{baseUrl}}/api/person/v1/1",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -645,13 +846,7 @@
 										"api",
 										"person",
 										"v1",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "<long>"
-										}
+										"1"
 									]
 								},
 								"description": "Finds a person"
@@ -869,7 +1064,17 @@
 										"value": "application/json"
 									}
 								],
-								"url": "{{baseUrl}}/api/book/v1",
+								"url": {
+									"raw": "{{baseUrl}}/api/book/v1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"book",
+										"v1"
+									]
+								},
 								"description": "Finds all books"
 							},
 							"response": [
@@ -883,7 +1088,17 @@
 												"value": "application/json"
 											}
 										],
-										"url": "{{baseUrl}}/api/book/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/book/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"book",
+												"v1"
+											]
+										}
 									},
 									"status": "OK",
 									"code": 200,
@@ -902,7 +1117,17 @@
 									"originalRequest": {
 										"method": "GET",
 										"header": [],
-										"url": "{{baseUrl}}/api/book/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/book/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"book",
+												"v1"
+											]
+										}
 									},
 									"status": "Bad Request",
 									"code": 400,
@@ -916,7 +1141,17 @@
 									"originalRequest": {
 										"method": "GET",
 										"header": [],
-										"url": "{{baseUrl}}/api/book/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/book/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"book",
+												"v1"
+											]
+										}
 									},
 									"status": "Unauthorized",
 									"code": 401,
@@ -930,7 +1165,17 @@
 									"originalRequest": {
 										"method": "GET",
 										"header": [],
-										"url": "{{baseUrl}}/api/book/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/book/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"book",
+												"v1"
+											]
+										}
 									},
 									"status": "Not Found",
 									"code": 404,
@@ -944,7 +1189,17 @@
 									"originalRequest": {
 										"method": "GET",
 										"header": [],
-										"url": "{{baseUrl}}/api/book/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/book/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"book",
+												"v1"
+											]
+										}
 									},
 									"status": "Internal Server Error",
 									"code": 500,
@@ -979,7 +1234,17 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/book/v1",
+								"url": {
+									"raw": "{{baseUrl}}/api/book/v1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"book",
+										"v1"
+									]
+								},
 								"description": "Updates a book by passing in a JSON, XML or YML reporesentation of the book"
 							},
 							"response": [
@@ -1007,7 +1272,17 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/book/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/book/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"book",
+												"v1"
+											]
+										}
 									},
 									"status": "OK",
 									"code": 200,
@@ -1041,7 +1316,17 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/book/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/book/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"book",
+												"v1"
+											]
+										}
 									},
 									"status": "Bad Request",
 									"code": 400,
@@ -1070,7 +1355,17 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/book/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/book/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"book",
+												"v1"
+											]
+										}
 									},
 									"status": "Unauthorized",
 									"code": 401,
@@ -1099,7 +1394,17 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/book/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/book/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"book",
+												"v1"
+											]
+										}
 									},
 									"status": "Not Found",
 									"code": 404,
@@ -1128,7 +1433,17 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/book/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/book/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"book",
+												"v1"
+											]
+										}
 									},
 									"status": "Internal Server Error",
 									"code": 500,
@@ -1163,7 +1478,17 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/book/v1",
+								"url": {
+									"raw": "{{baseUrl}}/api/book/v1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"book",
+										"v1"
+									]
+								},
 								"description": "Adds a new book by passing in a JSON, XML or YML reporesentation of the book"
 							},
 							"response": [
@@ -1191,7 +1516,17 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/book/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/book/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"book",
+												"v1"
+											]
+										}
 									},
 									"status": "OK",
 									"code": 200,
@@ -1225,7 +1560,17 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/book/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/book/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"book",
+												"v1"
+											]
+										}
 									},
 									"status": "Bad Request",
 									"code": 400,
@@ -1254,7 +1599,17 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/book/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/book/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"book",
+												"v1"
+											]
+										}
 									},
 									"status": "Unauthorized",
 									"code": 401,
@@ -1283,7 +1638,17 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/book/v1"
+										"url": {
+											"raw": "{{baseUrl}}/api/book/v1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"book",
+												"v1"
+											]
+										}
 									},
 									"status": "Internal Server Error",
 									"code": 500,
@@ -1694,6 +2059,220 @@
 									"body": ""
 								}
 							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Authenticates a user and returns a token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(responseCode.code >= 200 && responseCode.code <= 299){\r",
+									"    var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"    postman.setEnvironmentVariable('accessToken', jsonData.accessToken);\r",
+									"    postman.setEnvironmentVariable('refreshToken', jsonData.refreshToken);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"{{username}}\",\n  \"password\": \"{{password}}\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/signin",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signin",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "<string>"
+						}
+					]
+				},
+				{
+					"name": "Refresh token for authenticated user and returns a token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(responseCode.code >= 200 && responseCode.code <= 299){\r",
+									"    var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"    postman.setEnvironmentVariable('accessToken', jsonData.accessToken);\r",
+									"    postman.setEnvironmentVariable('refreshToken', jsonData.refreshToken);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{refreshToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"{{username}}\",\n  \"password\": \"{{password}}\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/refresh/{{username}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"refresh",
+								"{{username}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signin",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "<string>"
 						}
 					]
 				}
