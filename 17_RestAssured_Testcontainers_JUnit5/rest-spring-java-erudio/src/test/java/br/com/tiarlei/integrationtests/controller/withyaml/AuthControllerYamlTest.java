@@ -1,8 +1,9 @@
-package br.com.tiarlei.integrationtests.controller.withxml;
+package br.com.tiarlei.integrationtests.controller.withyaml;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertNotNull;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -13,33 +14,62 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
 import br.com.tiarlei.configs.TestConfigs;
+import br.com.tiarlei.integrationtests.controller.withyaml.mapper.YMLMapper;
 import br.com.tiarlei.integrationtests.dto.AccountCredentialDTO;
 import br.com.tiarlei.integrationtests.dto.TokenDTO;
 import br.com.tiarlei.integrationtests.testcontainers.AbstractIntegrationTest;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.config.EncoderConfig;
+import io.restassured.config.RestAssuredConfig;
+import io.restassured.filter.log.LogDetail;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
+import io.restassured.http.ContentType;
+import io.restassured.specification.RequestSpecification;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @TestMethodOrder(OrderAnnotation.class)
-public class AuthControllerXmlTest  extends AbstractIntegrationTest{
+public class AuthControllerYamlTest  extends AbstractIntegrationTest{
 
+	private static YMLMapper objectMapper;
 	private static TokenDTO tokenDTO;
+	
+	@BeforeAll
+	public static void setup() {
+		objectMapper = new YMLMapper();
+	}
 	
 	@Test
 	@Order(1)
 	public void testSignin() throws JsonMappingException, JsonProcessingException {
 		AccountCredentialDTO user = new AccountCredentialDTO("leandro", "admin123");
 		
-		tokenDTO = given()
+		RequestSpecification specification = new RequestSpecBuilder()
+					.addFilter(new RequestLoggingFilter(LogDetail.ALL))
+					.addFilter(new ResponseLoggingFilter(LogDetail.ALL))
+				.build();
+		
+		tokenDTO = given().spec(specification)
+				.config(
+						RestAssuredConfig
+							.config()
+							.encoderConfig(
+								EncoderConfig.encoderConfig()
+								.encodeContentTypeAs(
+										TestConfigs.CONTENT_TYPE_YML, 
+										ContentType.TEXT)))
+				.accept(TestConfigs.CONTENT_TYPE_YML)
 				.basePath("/auth/signin")
 					.port(TestConfigs.SERVER_PORT)
-					.contentType(TestConfigs.CONTENT_TYPE_XML)
-				.body(user)
+					.contentType(TestConfigs.CONTENT_TYPE_YML)
+				.body(user, objectMapper)
 					.when()
 				.post() 
 					.then()
 						.statusCode(200)
 							.extract()
 							.body()
-								.as(TokenDTO.class);
+								.as(TokenDTO.class, objectMapper);
 		
 		assertNotNull(tokenDTO.getAccessToken());
 		assertNotNull(tokenDTO.getRefreshToken());
@@ -50,9 +80,18 @@ public class AuthControllerXmlTest  extends AbstractIntegrationTest{
 	public void testRefresh() throws JsonMappingException, JsonProcessingException {
 
 		var newTokenDTO = given()
+				.config(
+					RestAssuredConfig
+						.config()
+						.encoderConfig(
+							EncoderConfig.encoderConfig()
+							.encodeContentTypeAs(
+								TestConfigs.CONTENT_TYPE_YML, 
+									ContentType.TEXT)))
+				.accept(TestConfigs.CONTENT_TYPE_YML)
 				.basePath("/auth/refresh")
 				.port(TestConfigs.SERVER_PORT)
-				.contentType(TestConfigs.CONTENT_TYPE_XML)
+				.contentType(TestConfigs.CONTENT_TYPE_YML)
 					.pathParam("username", tokenDTO.getUsername())
 					.header(TestConfigs.HEADER_PARAM_AUTHORIZATION, "Bearer " + tokenDTO.getRefreshToken())
 				.when()
@@ -61,7 +100,7 @@ public class AuthControllerXmlTest  extends AbstractIntegrationTest{
 					.statusCode(200)
 				.extract()
 				.body()
-				.as(TokenDTO.class);
+				.as(TokenDTO.class, objectMapper);
 		
 		assertNotNull(newTokenDTO.getAccessToken());
 		assertNotNull(newTokenDTO.getRefreshToken());
