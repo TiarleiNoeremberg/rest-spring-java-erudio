@@ -3,6 +3,8 @@ package br.com.tiarlei.integrationtests.dto;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -10,7 +12,9 @@ public class PersonDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
+	@JsonProperty("first_name")
 	private String firstName;
+	@JsonProperty("last_name")
 	private String lastName;
 	private String address;
 	private String gender;
