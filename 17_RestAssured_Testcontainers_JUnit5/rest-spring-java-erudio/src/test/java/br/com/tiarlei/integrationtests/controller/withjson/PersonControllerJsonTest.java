@@ -195,7 +195,6 @@ public class PersonControllerJsonTest extends AbstractIntegrationTest{
 					.statusCode(204);	//código esperado
 		}
 		
-
 		@Test
 		@Order(5)
 		public void testFindAll() throws JsonMappingException, JsonProcessingException {
@@ -243,6 +242,25 @@ public class PersonControllerJsonTest extends AbstractIntegrationTest{
 		assertEquals("Patos de Minas - Minas Gerais - Brasil", foundPersonSix.getAddress());
 		assertEquals("Male", foundPersonSix.getGender());
 	}
+		
+		@Test
+		@Order(6)
+		public void testFindAllWithoutToken() throws JsonMappingException, JsonProcessingException {
+			
+			RequestSpecification specificationWithoutToken = new RequestSpecBuilder()
+					.setBasePath("/api/person/v1")
+					.setPort(TestConfigs.SERVER_PORT)
+						.addFilter(new RequestLoggingFilter(LogDetail.ALL))
+						.addFilter(new ResponseLoggingFilter(LogDetail.ALL))
+					.build();
+			
+			given().spec(specificationWithoutToken)
+					.contentType(TestConfigs.CONTENT_TYPE_JSON)
+						.when()
+						.get()
+					.then()
+						.statusCode(403);
+		}
 
 	private void mockPerson() {
 		person.setFirstName("Nelson");
