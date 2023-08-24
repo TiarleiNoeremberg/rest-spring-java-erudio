@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import org.springframework.hateoas.RepresentationModel;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.github.dozermapper.core.Mapping;
@@ -26,6 +27,8 @@ public class PersonDTO extends RepresentationModel<PersonDTO> implements Seriali
 	
 	//@JsonIgnore //Caso queira omitir algum campo no json na serialização
 	private String gender;
+	
+	private Boolean enabled;
 	
 	public PersonDTO() {
 	}
@@ -70,11 +73,19 @@ public class PersonDTO extends RepresentationModel<PersonDTO> implements Seriali
 		this.gender = gender;
 	}
 
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(address, firstName, gender, key, lastName);
+		result = prime * result + Objects.hash(address, enabled, firstName, gender, key, lastName);
 		return result;
 	}
 
@@ -87,8 +98,8 @@ public class PersonDTO extends RepresentationModel<PersonDTO> implements Seriali
 		if (getClass() != obj.getClass())
 			return false;
 		PersonDTO other = (PersonDTO) obj;
-		return Objects.equals(address, other.address) && Objects.equals(firstName, other.firstName)
-				&& Objects.equals(gender, other.gender) && Objects.equals(key, other.key)
-				&& Objects.equals(lastName, other.lastName);
+		return Objects.equals(address, other.address) && Objects.equals(enabled, other.enabled)
+				&& Objects.equals(firstName, other.firstName) && Objects.equals(gender, other.gender)
+				&& Objects.equals(key, other.key) && Objects.equals(lastName, other.lastName);
 	}
 }

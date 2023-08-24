@@ -17,6 +17,7 @@ import br.com.tiarlei.mapper.DozerMapper;
 import br.com.tiarlei.mapper.custom.PersonMapper;
 import br.com.tiarlei.model.Person;
 import br.com.tiarlei.repositories.PersonRepository;
+import jakarta.transaction.Transactional;
 
 @Service
 public class PersonServices {
@@ -69,6 +70,19 @@ public class PersonServices {
 		
 		var vo =  DozerMapper.parseObject(repository.save(entity), PersonDTO.class);
 		vo.add(linkTo(methodOn(PersonController.class).findById(vo.getKey())).withSelfRel());
+		return vo;
+	}
+	
+	@Transactional
+	public PersonDTO disablePerson(Long id) {
+		logger.info("Disabling one person!");
+		
+		repository.disablePerson(id);
+		
+		var entity = repository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
+		var vo = DozerMapper.parseObject(entity, PersonDTO.class);
+		vo.add(linkTo(methodOn(PersonController.class).findById(id)).withSelfRel());
 		return vo;
 	}
 	
