@@ -54,6 +54,25 @@ public class PersonServices {
 		
 		return assembler.toModel(personDTOsPage, link);
 	}
+	
+	public PagedModel<EntityModel<PersonDTO>> findPersonByName(String firstName, Pageable pageable) {
+		logger.info("Finding all people contain characters from firstName!");
+		
+		var personPage = repository.findPersonByName(firstName, pageable);
+		
+		var personDTOsPage = personPage.map(p -> DozerMapper.parseObject(p, PersonDTO.class));
+		personDTOsPage.map(
+				p -> p.add(
+						linkTo(methodOn(PersonController.class)
+								.findById(p.getKey())).withSelfRel()));
+		
+		Link link = linkTo(methodOn(PersonController.class)
+				.findAll(pageable.getPageNumber(),
+						pageable.getPageSize(),
+						"asc")).withSelfRel();
+		
+		return assembler.toModel(personDTOsPage, link);
+	}
 		
 	public PersonDTO findById(Long id) {
 		logger.info("Finding one person!");
